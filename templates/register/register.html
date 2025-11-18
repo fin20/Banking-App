@@ -1,0 +1,31 @@
+
+
+{% extends "base/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="text-center mb-4">
+            <h2 class="mt-3 mb-1">Create Your Account</h2>
+        </div>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary py-2" type="submit">Create Account</button>
+                    </div>
+                </form>
+                <div class="text-center mt-4">
+                    <small>Already have an account? <a href="{% url 'login-user' %}" class="text-decoration-none">Sign In</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

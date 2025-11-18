@@ -1,0 +1,22 @@
+
+
+{% extends "base/base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+    <h1 class="display-1 accent mb-5">PayApp</h1>
+    <div class="d-grid gap-3 col-6">
+      <a href="{% url 'login-user' %}" class="btn btn-primary btn-lg">
+        Login
+      </a>
+      <a href="{% url 'register-customer' %}" class="btn btn-secondary btn-lg">
+        Register
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+
+            

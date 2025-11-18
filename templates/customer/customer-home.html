@@ -1,0 +1,56 @@
+
+{% extends "base/base.html" %}
+
+{% block title %}Welcome to Customer's home page{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1>Welcome, {{ user.username }}</h1>
+    <p>Account Balance: {{ account.balance }} {{ account.currency }}</p>
+    <p>Email: {{ user.email }}</p>
+
+    <div class="d-flex gap-3">
+        <form method="get" action="{% url 'transfer-payment' %}" class="flex-fill">
+            <button 
+                class="btn btn-outline-primary rounded-pill w-100" 
+                type="submit" 
+                style="padding: 8px 40px; font-size: 20px;">
+                Transfer
+            </button>
+        </form>
+
+        <form method="get" action="{% url 'request-payment' %}" class="flex-fill">
+            <button 
+                class="btn btn-outline-primary rounded-pill w-100" 
+                type="submit" 
+                style="padding: 8px 40px; font-size: 20px;">
+                Request
+            </button>
+        </form>
+
+        <form method="get" action="{% url 'manage-requests' %}" class="flex-fill">
+            <button 
+                class="btn btn-outline-primary rounded-pill w-100" 
+                type="submit" 
+                style="padding: 8px 40px; font-size: 20px;">
+                Manage Requests
+            </button>
+        </form>
+    </div>
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0 text-center">Your Transaction History</h6>
+        {% for transaction in transactions %}
+            <div class="d-flex text-body-secondary pt-3 justify-content-center">
+                <p class="pb-3 mb-0 small lh-sm border-bottom text-center">
+                    Date of transaction: {{ transaction.date }}
+                    <br>
+                    Amount: {{ transaction.amount }}
+                    <br>
+                    Description: {{ transaction.description }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
