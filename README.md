@@ -1,5 +1,4 @@
 # Banking-App
-Developed a banking app using Django.
 
 Built a full-stack web application with a Python Django back end and a front end using HTML, CSS, Bootstrap, and JavaScript.
 
